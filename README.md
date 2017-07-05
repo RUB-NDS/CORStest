@@ -49,4 +49,4 @@ Note that the absolute numbers are quite low, because only 3% of the 1,000,000 t
 
 ### Background
 
-Read more on the technical backgorund of CORS misconfigurations in this fine [blogpost](http://blog.portswigger.net/2016/10/exploiting-cors-misconfigurations-for.html) or check out this [talk](https://www.youtube.com/watch?v=wgkj4ZgxI4c).
+Read more on the technical backgorund of CORS misconfigurations in this fine [blogpost](http://blog.portswigger.net/2016/10/exploiting-cors-misconfigurations-for.html) or check out this [talk](https://www.youtube.com/watch?v=wgkj4ZgxI4c). A large scale evaluation of CORS misconfigurations using *CORStest* is documented [here](http://web-in-security.blogspot.de/2017/07/cors-misconfigurations-on-large-scale.html).
