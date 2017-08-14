@@ -1,5 +1,5 @@
 ## CORStest
-### A simple CORS misconfigurations checker
+### A simple CORS misconfiguration scanner
 
 **Based on the research of [James Kettle](https://twitter.com/albinowax)**
 
