@@ -81,7 +81,7 @@ def cors(url, origin, ssltest=False, firstrun=False):
       if acac and acao != '*' and not args.q: alert(url, "Access-Control-Allow-Credentials present")
       if vary and not args.q: warning(url, "Access-Control-Allow-Origin dynamically generated")
     if ssltest and response.info().getheader('Strict-Transport-Security'): acao = ""
-    return acao or ""
+    return (acao or "") if acac else ""
   except Exception as e:
     if not args.q: error(url, e.message or str(e).splitlines()[-1])
     if not firstrun: return ""
