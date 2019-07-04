@@ -47,12 +47,12 @@ def check(url):
     elif re.findall("\*.", acao): invalid(url, 'Wrong use of wildcard, only single "*" is valid')
     elif re.findall("fiddle.jshell.net|s.codepen.io", acao): alert(url, "Developer backdoor")
     elif "evil.org" in cors(url, "evil.org"): alert(url, "Origin reflection")
-    elif "null" == cors(url, "null").lower(): alert(url, "Null misconfiguration")
-    elif host+".tk" in cors(url, host+".tk"): alert(url, "Post-domain wildcard")
+    elif cors(url, url, True).startswith("http://"): warning(url, "Non-ssl site allowed")
+    elif "sub."+host in cors(url, "sub."+url): warning(url, "Arbitrary subdomains allowed")
     elif "not"+host in cors(url, "not"+url):
       alert(url, "Pre-domain wildcard") if sld(host) else warning(url, "Pre-subdomain wildcard")
-    elif "sub."+host in cors(url, "sub."+url): warning(url, "Arbitrary subdomains allowed")
-    elif cors(url, url, True).startswith("http://"): warning(url, "Non-ssl site allowed")
+    elif host+".tk" in cors(url, host+".tk"): alert(url, "Post-domain wildcard")
+    elif "null" == cors(url, "null").lower(): alert(url, "Null misconfiguration")
     else: info(url, acao)
   elif acao != None and not args.q: notvuln(url, "Access-Control-Allow-Origin header not present")
   # TBD: maybe use CORS preflight options request instead to check if cors protocol is understood
