@@ -31,6 +31,7 @@ optional arguments:
   -s             always force ssl/tls requests
   -q             quiet, allow-credentials only
   -v             produce a more verbose output
+  -x proxy       use proxy for all requests eg. 127.0.0.1:8080
 ```
 
 ### Example

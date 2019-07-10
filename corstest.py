@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # python standard library
-import re, sys, ssl, signal, urllib2, urlparse, argparse, multiprocessing
+import re, sys, ssl, signal, urllib2, urlparse, argparse, multiprocessing, os
 
 # -------------------------------------------------------------------------------------------------
 
@@ -14,6 +14,7 @@ def usage():
   parser.add_argument("-s", help="always force ssl/tls requests", action="store_true")
   parser.add_argument("-q", help="quiet, allow-credentials only", action="store_true")
   parser.add_argument("-v", help="produce a more verbose output", action="store_true")
+  parser.add_argument("-x", help="use proxy (eg. 127.0.0.1:8080)")
   return parser.parse_args()
 
 # -------------------------------------------------------------------------------------------------
@@ -38,6 +39,10 @@ def check(url):
   if re.findall("^https://", url): args.s = True     # set protocol
   url = re.sub("^https?://", "", url)                # url w/o proto
   host = urlparse.urlparse("//"+url).hostname or ""  # set hostname
+  if args.x:
+    os.environ['http_proxy'] = args.x
+    os.environ['https_proxy'] = args.x
+
   acao = cors(url, url, False, True)                 # perform request
   if acao:
     if args.q and (acao == "no_acac" or "*" == acao): return
