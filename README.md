@@ -3,7 +3,7 @@
 
 **Based on the research of [James Kettle](https://twitter.com/albinowax)**
 
-CORStest is a *quick & dirty* Python 2 tool to find Cross-Origin Resource Sharing ([CORS](https://www.w3.org/TR/cors/)) misconfigurations. It takes a text file as input which may contain a list of domain names or URLs. Currently, the following potential vulnerabilities are detected by sending a certain `Origin` request header and checking for the `Access-Control-Allow-Origin` response header:
+CORStest is a *quick & dirty* Python 3 tool to find Cross-Origin Resource Sharing ([CORS](https://www.w3.org/TR/cors/)) misconfigurations. It takes a text file as input which may contain a list of domain names or URLs. Currently, the following potential vulnerabilities are detected by sending a certain `Origin` request header and checking for the `Access-Control-Allow-Origin` response header:
 
 - **Developer backdoor:** Insecure dev origins like JSFiddle or CodePen are allowed to access this resource
 - **Origin reflection:** The origin is simply echoed in ACAO header, any site is allowed to access this resource
